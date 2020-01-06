@@ -8,7 +8,7 @@ import java.util.Date;
 public class ExerciseTest {
 
     @Test
-    public void testExerciseInit() {
+    public void testExerciseConstructor() {
         Date today = new Date();
         Exercise ex = new Exercise("Squat", today);
     }
