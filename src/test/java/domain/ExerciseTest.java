@@ -12,4 +12,11 @@ public class ExerciseTest {
         Date today = new Date();
         Exercise ex = new Exercise("Squat", today);
     }
+
+    @Test
+    public void testGetName() {
+        Date today = new Date();
+        Exercise ex = new Exercise("Squat", today);
+        assertEquals(ex.getName(), "Squat");
+    }
 }
