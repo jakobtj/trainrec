@@ -1,12 +1,12 @@
 package domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ExerciseEntry {
-    private Date date;
+    private LocalDate date;
     private Exercise exercise;
 
-    public ExerciseEntry(Date date, Exercise exercise) {
+    public ExerciseEntry(LocalDate date, Exercise exercise) {
         this.date = date;
         this.exercise = exercise;
     }
