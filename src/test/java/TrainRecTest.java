@@ -7,11 +7,13 @@ import java.time.LocalDate;
 
 public class TrainRecTest {
     @Test
-    public void testCompareExercise() {
+    public void testCompareExercises() {
         Exercise first = new Exercise("Squat");
-        Exercise other = new Exercise("Squat");
+        Exercise second = new Exercise("Squat");
+        Exercise third = new Exercise("Bench press");
 
-        Assert.assertEquals(other, first);
+        Assert.assertEquals(second, first);
+        Assert.assertNotEquals(third, first);
     }
 
     @Test
