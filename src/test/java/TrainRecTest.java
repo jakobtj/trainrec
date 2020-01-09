@@ -1,23 +1,27 @@
 package trainrec;
 
 import org.junit.Test;
-import static org.junit.Assert.assertTrue;
+import org.junit.Assert;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class TrainRecTest {
+    @Test
+    public void testCreateEmptyTrainingRecord() {
+        TrainingRecord rec = new TrainingRecord();
+        Assert.assertEquals(0, rec.getExerciseCount());
+    }
 
     @Test
-    public void testExerciseEntryAdd() {
-        ArrayList<ExerciseEntry> entries = new ArrayList<ExerciseEntry>();
-        LocalDate today = LocalDate.now();
+    public void testAddExerciseToTrainingRecord() {
+        TrainingRecord rec = new TrainingRecord();
         Exercise squat = new Exercise("Squat");
+        LocalDate today = LocalDate.now();
         ExerciseEntry squatEntry = new ExerciseEntry(today, squat);
 
-        ExerciseEntryAdd adder = new ExerciseEntryAdd(entries);
-        adder.execute(squatEntry);
+        rec.add(squatEntry);
 
-        assertTrue(entries.contains(squatEntry));
+        Assert.assertTrue(rec.contains(squatEntry));
+        Assert.assertEquals(0, rec.getExerciseCount());
     }
 }
