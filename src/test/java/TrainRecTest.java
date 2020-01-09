@@ -22,6 +22,6 @@ public class TrainRecTest {
         rec.add(squatEntry);
 
         Assert.assertTrue(rec.contains(squatEntry));
-        Assert.assertEquals(0, rec.getExerciseCount());
+        Assert.assertEquals(1, rec.getExerciseCount());
     }
 }
