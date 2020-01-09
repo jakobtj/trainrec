@@ -6,4 +6,9 @@ public class Exercise {
     public Exercise(String name) {
         this.name = name;
     }
+
+    public boolean equals(Object object) {
+        Exercise other = (Exercise) object;
+        return name == other.name;
+    }
 }
