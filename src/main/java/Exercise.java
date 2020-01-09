@@ -1,4 +1,4 @@
-package domain;
+package trainrec;
 
 public class Exercise {
     private String name;

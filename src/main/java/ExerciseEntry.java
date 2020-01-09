@@ -1,4 +1,4 @@
-package domain;
+package trainrec;
 
 import java.time.LocalDate;
 

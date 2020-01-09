@@ -1,8 +1,6 @@
-package usecases;
+package trainrec;
 
 import java.util.ArrayList;
-
-import domain.ExerciseEntry;
 
 public class ExerciseEntryAdd{
     private ArrayList<ExerciseEntry> entries;

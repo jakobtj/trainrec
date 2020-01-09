@@ -1,14 +1,10 @@
-package usecases;
+package trainrec;
 
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import domain.ExerciseEntry;
-import domain.Exercise;
-import usecases.ExerciseEntryAdd;
 
 public class UseCaseTest {
     @Test
