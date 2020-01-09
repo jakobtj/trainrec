@@ -6,7 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class UseCaseTest {
+public class TrainRecTest {
+
     @Test
     public void testExerciseEntryAdd() {
         ArrayList<ExerciseEntry> entries = new ArrayList<ExerciseEntry>();
