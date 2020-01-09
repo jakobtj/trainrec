@@ -5,7 +5,9 @@ import java.util.ArrayList;
 class TrainingRecord {
     private ArrayList<ExerciseEntry> entries;
 
-    public TrainingRecord() {}
+    public TrainingRecord() {
+        entries = new ArrayList();
+    }
 
     void add(ExerciseEntry entry) {
         entries.add(entry);
