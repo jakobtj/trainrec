@@ -1,23 +1,36 @@
 package trainrec;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 
-class TrainingRecord {
+public class TrainingRecord {
     private ArrayList<ExerciseEntry> entries;
+    private LocalDate date;
 
     public TrainingRecord() {
         entries = new ArrayList();
+        date = LocalDate.now();
     }
 
-    void add(ExerciseEntry entry) {
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate newDate) {
+        date = newDate;
+    }
+
+    public void addEntry(String exerciseName) {
+        Exercise exercise = new Exercise(exerciseName);
+        ExerciseEntry entry = new ExerciseEntry(date, exercise);
         entries.add(entry);
     }
 
-    boolean contains(ExerciseEntry entry) {
+    public boolean contains(ExerciseEntry entry) {
         return entries.contains(entry);
     }
 
-    int getExerciseCount() {
+    public int getEntryCount() {
         return entries.size();
     }
 
