@@ -33,7 +33,6 @@ public class TrainingRecordTest {
         ExerciseEntry squatEntry = new ExerciseEntry(newDate, squat);
 
         rec.setDate(newDate);
-
         rec.addEntry("Squat");
 
         Assert.assertTrue(rec.contains(squatEntry));
