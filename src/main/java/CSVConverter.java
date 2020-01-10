@@ -10,7 +10,8 @@ class CSVConverter {
     public static ExerciseEntry fromString(String inString) {
         String[] splitString = inString.split(";");
         LocalDate date = LocalDate.parse(splitString[0], formatter);
-        return new ExerciseEntry(date, new Exercise(splitString[1]));
+        Exercise exercise = new Exercise(splitString[1]);
+        return new ExerciseEntry(date, exercise);
     }
 
     public static String toString(ExerciseEntry entry) {
