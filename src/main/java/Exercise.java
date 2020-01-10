@@ -9,6 +9,6 @@ public class Exercise {
 
     public boolean equals(Object object) {
         Exercise other = (Exercise) object;
-        return name == other.name;
+        return name.equals(other.name);
     }
 }

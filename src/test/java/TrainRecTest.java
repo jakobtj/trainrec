@@ -37,6 +37,16 @@ public class TrainRecTest {
     }
 
     @Test
+    public void testCSVConverterFromString() {
+        String inString = "2020.01.10;Squat";
+        ExerciseEntry converted = CSVConverter.fromString(inString);
+        ExerciseEntry comparison = new ExerciseEntry(
+                LocalDate.of(2020, 1, 10), new Exercise("Squat")
+                );
+        Assert.assertEquals(comparison, converted);
+    }
+
+    @Test
     public void testCreateEmptyTrainingRecord() {
         TrainingRecord rec = new TrainingRecord();
         Assert.assertEquals(0, rec.getExerciseCount());
