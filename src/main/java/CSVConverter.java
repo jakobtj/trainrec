@@ -12,4 +12,9 @@ class CSVConverter {
         LocalDate date = LocalDate.parse(splitString[0], formatter);
         return new ExerciseEntry(date, new Exercise(splitString[1]));
     }
+
+    public static String toString(ExerciseEntry entry) {
+        String date = entry.getDate().format(formatter);
+        return date + ";" + entry.getExercise().getName();
+    }
 }

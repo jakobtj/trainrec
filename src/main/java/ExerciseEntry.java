@@ -11,6 +11,14 @@ class ExerciseEntry {
         this.exercise = exercise;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Exercise getExercise() {
+        return exercise;
+    }
+
     @Override
     public boolean equals(Object object) {
         ExerciseEntry other = (ExerciseEntry) object;
