@@ -24,4 +24,18 @@ public class TrainingRecordTest {
         Assert.assertEquals(1, rec.getEntryCount());
         Assert.assertTrue(rec.contains(squatEntry));
     }
+
+    @Test
+    public void testSetDate() {
+        TrainingRecord rec = new TrainingRecord();
+        LocalDate newDate = LocalDate.of(2021, 12, 31);
+        Exercise squat = new Exercise("Squat");
+        ExerciseEntry squatEntry = new ExerciseEntry(newDate, squat);
+
+        rec.setDate(newDate);
+
+        rec.addEntry("Squat");
+
+        Assert.assertTrue(rec.contains(squatEntry));
+    }
 }

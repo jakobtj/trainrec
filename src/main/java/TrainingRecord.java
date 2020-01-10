@@ -16,6 +16,10 @@ public class TrainingRecord {
         return date;
     }
 
+    public void setDate(LocalDate newDate) {
+        date = newDate;
+    }
+
     public void addEntry(String exerciseName) {
         Exercise exercise = new Exercise(exerciseName);
         ExerciseEntry entry = new ExerciseEntry(date, exercise);
