@@ -7,11 +7,8 @@
  */
 
 plugins {
-    // Apply the java plugin to add support for Java
-    id 'java'
-
-    // Apply the application plugin to add support for building a CLI application.
-    id 'application'
+    // Apply the java-library plugin to add support for Java Library
+    id 'java-library'
 }
 
 repositories {
@@ -23,9 +20,4 @@ repositories {
 dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
-}
-
-application {
-    // Define the main class for the application.
-    mainClassName = 'domain.Exercise'
 }
