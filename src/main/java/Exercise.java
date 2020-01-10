@@ -1,6 +1,6 @@
 package trainrec;
 
-public class Exercise {
+class Exercise {
     private String name;
 
     public Exercise(String name) {
