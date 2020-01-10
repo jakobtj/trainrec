@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 class CSVConverter {
     private static DateTimeFormatter formatter = 
-        DateTimeFormatter.ofPattern("yyyy.MM.dd");
+        DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public static ExerciseEntry fromString(String inString) {
         String[] splitString = inString.split(";");
