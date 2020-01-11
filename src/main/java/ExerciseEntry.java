@@ -1,5 +1,6 @@
 package trainrec;
 
+import java.util.Comparator;
 import java.time.LocalDate;
 
 class ExerciseEntry {
@@ -24,4 +25,12 @@ class ExerciseEntry {
         ExerciseEntry other = (ExerciseEntry) object;
         return date.equals(other.date) && exercise.equals(other.exercise);
     }
+
+	public static Comparator<ExerciseEntry> sortByDate = 
+        new Comparator<ExerciseEntry>() {
+            @Override
+		    public int compare(ExerciseEntry lhs, ExerciseEntry rhs) {
+                return lhs.date.compareTo(rhs.date);
+            }
+	};
 }

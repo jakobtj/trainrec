@@ -1,6 +1,7 @@
 package trainrec;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.time.LocalDate;
 
 public class TrainingRecord {
@@ -16,14 +17,8 @@ public class TrainingRecord {
         return date;
     }
 
-    public void setDate(LocalDate newDate) {
-        date = newDate;
-    }
-
-    public void addEntry(String exerciseName) {
-        Exercise exercise = new Exercise(exerciseName);
-        ExerciseEntry entry = new ExerciseEntry(date, exercise);
-        entries.add(entry);
+    public ArrayList<ExerciseEntry> getEntries() {
+        return entries;
     }
 
     public boolean contains(ExerciseEntry entry) {
@@ -34,4 +29,17 @@ public class TrainingRecord {
         return entries.size();
     }
 
+    public void setDate(LocalDate newDate) {
+        date = newDate;
+    }
+
+    public void sort() {
+        Collections.sort(entries, ExerciseEntry.sortByDate);
+    }
+
+    public void addEntry(String exerciseName) {
+        Exercise exercise = new Exercise(exerciseName);
+        ExerciseEntry entry = new ExerciseEntry(date, exercise);
+        entries.add(entry);
+    }
 }

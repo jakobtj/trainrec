@@ -37,4 +37,30 @@ public class TrainingRecordTest {
 
         Assert.assertTrue(rec.contains(squatEntry));
     }
+
+    @Test
+    public void testSortEntries() {
+        // Sorts by date. Most recent entry comes first.
+        LocalDate longAgo = LocalDate.of(1900, 1, 1);
+        LocalDate moreRecent = LocalDate.of(1950, 1, 1);
+        Exercise squat = new Exercise("Squat");
+
+        ExerciseEntry longAgoSquat = new ExerciseEntry(longAgo, squat);
+        ExerciseEntry moreRecentSquat = new ExerciseEntry(moreRecent, squat);
+
+        TrainingRecord rec = new TrainingRecord();
+        rec.setDate(moreRecent);
+        rec.addEntry("Squat");
+        rec.setDate(longAgo);
+        rec.addEntry("Squat");
+
+        // Assert that entries are in added order before sorting
+        Assert.assertEquals(moreRecentSquat, rec.getEntries().get(0));
+        Assert.assertEquals(longAgoSquat, rec.getEntries().get(1));
+
+        rec.sort();
+
+        Assert.assertEquals(longAgoSquat, rec.getEntries().get(0));
+        Assert.assertEquals(moreRecentSquat, rec.getEntries().get(1));
+    }
 }
