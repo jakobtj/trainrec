@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit test framework
+    // Test framework
     testImplementation("junit:junit:4.12")
+    testCompile("org.mockito:mockito-core:2.+")
 }
