@@ -2,7 +2,6 @@ package trainrec;
 
 import org.junit.Test;
 import org.junit.Assert;
-import org.mockito.Mockito;
 
 import java.util.List;
 import java.util.Arrays;
@@ -18,34 +17,34 @@ public class TrainingRecordTest {
 
     @Test
     public void testAddEntry() {
-        Date mockedDate = Mockito.mock(Date.class);
-        Mockito.when(mockedDate.toString()).thenReturn("2020-10-01");
+        String inputDate = "2020-10-01";
+        String inputExercise = "Squat";
 
         TrainingRecord rec = new TrainingRecord();
-        rec.setDate(mockedDate);
-        rec.addEntry("Squat");
+        Date date = Date.fromString(inputDate);
+        rec.setDate(date);
+        rec.addEntry(inputExercise);
 
         List<ExerciseEntry> entries = rec.listEntries();
-        String exercise = entries.get(0).getExercise();
-        String date = entries.get(0).getDate();
+        String outputExercise = entries.get(0).getExercise();
+        String outputDate = entries.get(0).getDate();
 
         Assert.assertEquals(1, entries.size());
-        Assert.assertEquals("Squat", exercise);
-        Assert.assertEquals("2020-10-01", date);
+        Assert.assertEquals(inputExercise, outputExercise);
+        Assert.assertEquals(inputDate, outputDate);
     }
 
     @Test
     public void testMultipleEntriesAreReturnedChronologically() {
-        String longAgo = "1900-31-05";
+        String longAgo = "1900-05-31";
         String recently = "2020-10-01";
-        String inbetween = "1950-15-12";
+        String inbetween = "1950-12-15";
         List<String> dates = Arrays.asList(recently, longAgo, inbetween);
 
         TrainingRecord rec = new TrainingRecord();
         for (String date : dates) {
-            Date mockdate = Mockito.mock(Date.class);
-            Mockito.when(mockdate.toString()).thenReturn(date);
-            rec.setDate(mockdate);
+            Date inputDate = Date.fromString(date);
+            rec.setDate(inputDate);
             rec.addEntry("Squat");
         }
 
