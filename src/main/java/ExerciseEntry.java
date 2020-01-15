@@ -3,7 +3,7 @@ package trainrec;
 import java.util.Comparator;
 import java.time.LocalDate;
 
-class ExerciseEntry {
+public class ExerciseEntry {
     private String date;
     private String exercise;
 
