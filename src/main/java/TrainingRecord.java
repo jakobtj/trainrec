@@ -18,7 +18,7 @@ public class TrainingRecord {
     }
 
     public void addEntry(String exercise) {
-        ExerciseEntry entry = new ExerciseEntry(activeDate.asString(), exercise);
+        ExerciseEntry entry = new ExerciseEntry(activeDate.toString(), exercise);
         entries.add(entry);
     }
 

@@ -19,7 +19,7 @@ public class TrainingRecordTest {
     @Test
     public void testAddEntry() {
         Date mockedDate = Mockito.mock(Date.class);
-        Mockito.when(mockedDate.asString()).thenReturn("2020-10-01");
+        Mockito.when(mockedDate.toString()).thenReturn("2020-10-01");
 
         TrainingRecord rec = new TrainingRecord();
         rec.setDate(mockedDate);
@@ -44,7 +44,7 @@ public class TrainingRecordTest {
         TrainingRecord rec = new TrainingRecord();
         for (String date : dates) {
             Date mockdate = Mockito.mock(Date.class);
-            Mockito.when(mockdate.asString()).thenReturn(date);
+            Mockito.when(mockdate.toString()).thenReturn(date);
             rec.setDate(mockdate);
             rec.addEntry("Squat");
         }

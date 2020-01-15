@@ -16,7 +16,7 @@ public class Date {
         return new Date(LocalDate.now());
     }
 
-    public String asString() {
+    public String toString() {
         return date.format(formatter);
     }
 }
