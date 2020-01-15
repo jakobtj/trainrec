@@ -4,26 +4,20 @@ import java.util.Comparator;
 import java.time.LocalDate;
 
 class ExerciseEntry {
-    private LocalDate date;
-    private Exercise exercise;
+    private String date;
+    private String exercise;
 
-    public ExerciseEntry(LocalDate date, Exercise exercise) {
+    public ExerciseEntry(String date, String exercise) {
         this.date = date;
         this.exercise = exercise;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public Exercise getExercise() {
+    public String getExercise() {
         return exercise;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        ExerciseEntry other = (ExerciseEntry) object;
-        return date.equals(other.date) && exercise.equals(other.exercise);
     }
 
 	public static Comparator<ExerciseEntry> sortByDate = 

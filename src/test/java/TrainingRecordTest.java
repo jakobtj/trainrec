@@ -2,65 +2,58 @@ package trainrec;
 
 import org.junit.Test;
 import org.junit.Assert;
+import org.mockito.Mockito;
 
-import java.time.LocalDate;
+import java.util.List;
+import java.util.Arrays;
 
 public class TrainingRecordTest {
     @Test
-    public void testCreateNew() {
+    public void testNewRecordHasZeroEntries() {
         TrainingRecord rec = new TrainingRecord();
+        List entries = rec.listEntries();
 
-        Assert.assertEquals(0, rec.getEntryCount());
-        Assert.assertEquals(LocalDate.now(), rec.getDate());
+        Assert.assertEquals(0, entries.size());
     }
 
     @Test
-    public void testAddExerciseEntry() {
-        TrainingRecord rec = new TrainingRecord();
-        rec.addEntry("Squat");
-        Exercise squat = new Exercise("Squat");
-        ExerciseEntry squatEntry = new ExerciseEntry(LocalDate.now(), squat);
+    public void testAddEntry() {
+        Date mockedDate = Mockito.mock(Date.class);
+        Mockito.when(mockedDate.asString()).thenReturn("2020-10-01");
 
-        Assert.assertEquals(1, rec.getEntryCount());
-        Assert.assertTrue(rec.contains(squatEntry));
+        TrainingRecord rec = new TrainingRecord();
+        rec.setDate(mockedDate);
+        rec.addEntry("Squat");
+
+        List<ExerciseEntry> entries = rec.listEntries();
+        String exercise = entries.get(0).getExercise();
+        String date = entries.get(0).getDate();
+
+        Assert.assertEquals(1, entries.size());
+        Assert.assertEquals("Squat", exercise);
+        Assert.assertEquals("2020-10-01", date);
     }
 
     @Test
-    public void testSetDate() {
-        TrainingRecord rec = new TrainingRecord();
-        LocalDate newDate = LocalDate.of(2021, 12, 31);
-        Exercise squat = new Exercise("Squat");
-        ExerciseEntry squatEntry = new ExerciseEntry(newDate, squat);
-
-        rec.setDate(newDate);
-        rec.addEntry("Squat");
-
-        Assert.assertTrue(rec.contains(squatEntry));
-    }
-
-    @Test
-    public void testSortEntries() {
-        // Sorts by date. Most recent entry comes first.
-        LocalDate longAgo = LocalDate.of(1900, 1, 1);
-        LocalDate moreRecent = LocalDate.of(1950, 1, 1);
-        Exercise squat = new Exercise("Squat");
-
-        ExerciseEntry longAgoSquat = new ExerciseEntry(longAgo, squat);
-        ExerciseEntry moreRecentSquat = new ExerciseEntry(moreRecent, squat);
+    public void testMultipleEntriesAreReturnedChronologically() {
+        String longAgo = "1900-31-05";
+        String recently = "2020-10-01";
+        String inbetween = "1950-15-12";
+        List<String> dates = Arrays.asList(recently, longAgo, inbetween);
 
         TrainingRecord rec = new TrainingRecord();
-        rec.setDate(moreRecent);
-        rec.addEntry("Squat");
-        rec.setDate(longAgo);
-        rec.addEntry("Squat");
+        for (String date : dates) {
+            Date mockdate = Mockito.mock(Date.class);
+            Mockito.when(mockdate.asString()).thenReturn(date);
+            rec.setDate(mockdate);
+            rec.addEntry("Squat");
+        }
 
-        // Assert that entries are in added order before sorting
-        Assert.assertEquals(moreRecentSquat, rec.getEntries().get(0));
-        Assert.assertEquals(longAgoSquat, rec.getEntries().get(1));
+        List<ExerciseEntry> entries = rec.listEntries();
 
-        rec.sort();
-
-        Assert.assertEquals(longAgoSquat, rec.getEntries().get(0));
-        Assert.assertEquals(moreRecentSquat, rec.getEntries().get(1));
+        Assert.assertEquals(3, entries.size());
+        Assert.assertEquals(longAgo, entries.get(0).getDate());
+        Assert.assertEquals(inbetween, entries.get(1).getDate());
+        Assert.assertEquals(recently, entries.get(2).getDate());
     }
 }
