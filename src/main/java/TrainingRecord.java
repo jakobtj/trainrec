@@ -22,8 +22,12 @@ public class TrainingRecord {
         entries.add(entry);
     }
 
-    public void setDate(Date date) {
+    public void setActiveDate(Date date) {
         activeDate = date;
+    }
+
+    public Date getActiveDate() {
+        return activeDate;
     }
 
     private void sort() {
