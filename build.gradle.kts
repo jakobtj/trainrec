@@ -20,5 +20,5 @@ repositories {
 dependencies {
     // Test framework
     testImplementation("junit:junit:4.12")
-    testCompile("org.mockito:mockito-core:2.+")
+    testImplementation("org.mockito:mockito-core:2.+")
 }
