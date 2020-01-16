@@ -21,7 +21,7 @@ public class TrainingRecordTest {
         String inputExercise = "Squat";
 
         TrainingRecord rec = new TrainingRecord();
-        Date date = Date.fromString(inputDate);
+        EntryDate date = EntryDate.fromString(inputDate);
         rec.setActiveDate(date);
         rec.addEntry(inputExercise);
 
@@ -43,7 +43,7 @@ public class TrainingRecordTest {
 
         TrainingRecord rec = new TrainingRecord();
         for (String date : dates) {
-            Date inputDate = Date.fromString(date);
+            EntryDate inputDate = EntryDate.fromString(date);
             rec.setActiveDate(inputDate);
             rec.addEntry("Squat");
         }

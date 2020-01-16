@@ -5,11 +5,11 @@ import java.util.Collections;
 
 public class TrainingRecord {
     private ArrayList<ExerciseEntry> entries;
-    private Date activeDate;
+    private EntryDate activeDate;
 
     public TrainingRecord() {
         entries = new ArrayList();
-        activeDate = Date.today();
+        activeDate = EntryDate.today();
     }
 
     public ArrayList<ExerciseEntry> listEntries() {
@@ -22,11 +22,11 @@ public class TrainingRecord {
         entries.add(entry);
     }
 
-    public void setActiveDate(Date date) {
+    public void setActiveDate(EntryDate date) {
         activeDate = date;
     }
 
-    public Date getActiveDate() {
+    public EntryDate getActiveDate() {
         return activeDate;
     }
 

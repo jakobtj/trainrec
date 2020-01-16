@@ -3,21 +3,21 @@ package trainrec;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Date {
+public class EntryDate {
     private LocalDate date;
     private static DateTimeFormatter formatter 
         = DateTimeFormatter.ISO_LOCAL_DATE;
 
-    public Date(LocalDate date) {
+    public EntryDate(LocalDate date) {
         this.date = date;
     }
 
-    public static Date today() {
-        return new Date(LocalDate.now());
+    public static EntryDate today() {
+        return new EntryDate(LocalDate.now());
     }
 
-    public static Date fromString(String isoformatted) {
-        return new Date(LocalDate.parse(isoformatted, formatter));
+    public static EntryDate fromString(String isoformatted) {
+        return new EntryDate(LocalDate.parse(isoformatted, formatter));
     }
 
     public String toString() {
