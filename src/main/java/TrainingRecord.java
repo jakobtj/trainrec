@@ -8,7 +8,7 @@ public class TrainingRecord {
     private EntryDate activeDate;
 
     public TrainingRecord() {
-        entries = new ArrayList();
+        entries = new ArrayList<ExerciseEntry>();
         activeDate = EntryDate.today();
     }
 
