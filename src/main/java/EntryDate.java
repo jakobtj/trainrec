@@ -1,6 +1,7 @@
 package trainrec;
 
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 public class EntryDate {
     private LocalDate date;

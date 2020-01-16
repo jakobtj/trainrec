@@ -1,7 +1,6 @@
 package trainrec;
 
 import java.util.Comparator;
-import java.time.LocalDate;
 
 public class ExerciseEntry {
     private String date;
