@@ -1,12 +1,35 @@
 package trainrec;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
+import org.mockito.Mockito;
 
 import java.util.List;
 import java.util.Arrays;
 
 public class TrainingRecordTest {
+    private TrainingRecord beforeRecord;
+    private StorageInterface db;
+    private String longAgo = "1900-05-31";
+    private String recently = "2020-10-01";
+    private String inbetween = "1950-12-15";
+
+    @Before
+    public void setUp() {
+        beforeRecord = new TrainingRecord();
+
+        db = Mockito.mock(StorageInterface.class);
+        beforeRecord.setStorage(db);
+
+        List<String> dates = Arrays.asList(recently, longAgo, inbetween);
+        for (String date : dates) {
+            EntryDate inputDate = EntryDate.fromString(date);
+            beforeRecord.setActiveDate(inputDate);
+            beforeRecord.addEntry("Squat");
+        }
+    }
+
     @Test
     public void testNewRecordHasZeroEntries() {
         TrainingRecord rec = new TrainingRecord();
@@ -36,23 +59,18 @@ public class TrainingRecordTest {
 
     @Test
     public void testMultipleEntriesAreReturnedChronologically() {
-        String longAgo = "1900-05-31";
-        String recently = "2020-10-01";
-        String inbetween = "1950-12-15";
-        List<String> dates = Arrays.asList(recently, longAgo, inbetween);
-
-        TrainingRecord rec = new TrainingRecord();
-        for (String date : dates) {
-            EntryDate inputDate = EntryDate.fromString(date);
-            rec.setActiveDate(inputDate);
-            rec.addEntry("Squat");
-        }
-
-        List<ExerciseEntry> entries = rec.listEntries();
+        
+        List<ExerciseEntry> entries = beforeRecord.listEntries();
 
         Assert.assertEquals(3, entries.size());
         Assert.assertEquals(longAgo, entries.get(0).getDate());
         Assert.assertEquals(inbetween, entries.get(1).getDate());
         Assert.assertEquals(recently, entries.get(2).getDate());
+    }
+
+    @Test
+    public void testSaveCallsStorageImplementation () {
+        beforeRecord.save();
+        Mockito.verify(db).save(beforeRecord);
     }
 }

@@ -6,6 +6,7 @@ import java.util.Collections;
 public class TrainingRecord {
     private ArrayList<ExerciseEntry> entries;
     private EntryDate activeDate;
+    private StorageInterface storage;
 
     public TrainingRecord() {
         entries = new ArrayList<ExerciseEntry>();
@@ -24,6 +25,14 @@ public class TrainingRecord {
 
     public void setActiveDate(EntryDate date) {
         activeDate = date;
+    }
+
+    public void setStorage(StorageInterface storage) {
+        this.storage = storage;
+    }
+
+    public void save() {
+        storage.save(this);
     }
 
     public EntryDate getActiveDate() {
