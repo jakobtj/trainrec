@@ -35,6 +35,10 @@ public class TrainingRecord {
         storage.save(this);
     }
 
+    public static TrainingRecord load(StorageInterface storage) {
+        return storage.load();
+    }
+
     public EntryDate getActiveDate() {
         return activeDate;
     }

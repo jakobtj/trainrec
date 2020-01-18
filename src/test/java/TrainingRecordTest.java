@@ -69,8 +69,17 @@ public class TrainingRecordTest {
     }
 
     @Test
-    public void testSaveCallsStorageImplementation () {
+    public void testSaveCallsStorageImplementation() {
         beforeRecord.save();
+
         Mockito.verify(db).save(beforeRecord);
+    }
+
+    @Test
+    public void testLoad() {
+        Mockito.when(db.load()).thenReturn(beforeRecord);
+        TrainingRecord rec = TrainingRecord.load(db);
+
+        Assert.assertEquals(beforeRecord, rec);
     }
 }
