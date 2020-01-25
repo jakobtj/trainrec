@@ -1,4 +1,4 @@
-package trainrec;
+package no.trainrec.core;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;

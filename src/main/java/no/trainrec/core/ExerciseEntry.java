@@ -1,4 +1,4 @@
-package trainrec;
+package no.trainrec.core;
 
 import java.util.Comparator;
 

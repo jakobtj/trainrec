@@ -1,4 +1,4 @@
-package trainrec;
+package no.trainrec.core;
 
 public interface StorageInterface {
     void save(TrainingRecord rec);
