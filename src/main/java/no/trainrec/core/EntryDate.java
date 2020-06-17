@@ -1,6 +1,8 @@
 package no.trainrec.core;
 
+import java.lang.IllegalArgumentException;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
 
 public class EntryDate {
@@ -17,7 +19,13 @@ public class EntryDate {
     }
 
     public static EntryDate fromString(String isoformatted) {
-        return new EntryDate(LocalDate.parse(isoformatted, formatter));
+        try {
+            return new EntryDate(LocalDate.parse(isoformatted, formatter));
+        } catch (DateTimeParseException ex) {
+            throw new IllegalArgumentException(
+                    "Date string must have YYYY-MM-DD format"
+                    );
+        }
     }
 
     public String toString() {
