@@ -9,7 +9,7 @@ public class EntryAdder {
 
     public EntryAdder(TrainingRecord rec) {
         this.rec = rec;
-        this.activeDate = LocalDate.now().format(
+        activeDate = LocalDate.now().format(
                 DateTimeFormatter.ISO_LOCAL_DATE
                 );
     }
@@ -17,5 +17,9 @@ public class EntryAdder {
     public void addEntry(String exerciseName) {
         ExerciseEntry entry = new ExerciseEntry(activeDate, exerciseName);
         rec.addEntry(entry);
+    }
+
+    public void setActiveDate(String date) {
+        activeDate = date;
     }
 }

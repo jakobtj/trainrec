@@ -28,11 +28,27 @@ public class EntryAdderTest {
     public void testAddEntry() {
         String inputName = "Squat";
         adder.addEntry(inputName);
+
+        Mockito.verify(mockedRec).addEntry(captor.capture());
+        ExerciseEntry passedEntry = captor.getValue();
+        String today = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+        Assert.assertEquals(today, passedEntry.getDate());
+        Assert.assertEquals(inputName, passedEntry.getExercise());
+    }
+
+    @Test
+    public void testAddEntryAfterSetDate() {
+        String inputDate = "1999-12-31";
+        adder.setActiveDate(inputDate);
+
+        String inputName = "Bench press";
+        adder.addEntry(inputName);
+
         Mockito.verify(mockedRec).addEntry(captor.capture());
         ExerciseEntry passedEntry = captor.getValue();
 
-        String today = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
-        Assert.assertEquals(today, passedEntry.getDate());
+        Assert.assertEquals(inputDate, passedEntry.getDate());
         Assert.assertEquals(inputName, passedEntry.getExercise());
     }
 }
