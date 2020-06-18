@@ -3,6 +3,8 @@ package no.trainrec.core;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
+import org.junit.function.ThrowingRunnable;
+
 import org.mockito.Mockito;
 import org.mockito.ArgumentCaptor;
 
@@ -50,5 +52,21 @@ public class EntryAdderTest {
 
         Assert.assertEquals(inputDate, passedEntry.getDate());
         Assert.assertEquals(inputName, passedEntry.getExercise());
+    }
+
+    @Test
+    public void testSetErroneousDateThrowsException() {
+        String notADate = "??";
+        Throwable exception = Assert.assertThrows(
+                IllegalArgumentException.class,
+                new ThrowingRunnable() {
+                    @Override
+                    public void run() throws Throwable {
+                        adder.setActiveDate(notADate);
+                    }
+                });
+        Assert.assertEquals("Date string must have YYYY-MM-DD format",
+            exception.getMessage()
+            );
     }
 }

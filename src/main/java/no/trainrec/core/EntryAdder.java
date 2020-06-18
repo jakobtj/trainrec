@@ -1,6 +1,8 @@
 package no.trainrec.core;
 
+import java.lang.IllegalArgumentException;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
 
 public class EntryAdder {
@@ -20,6 +22,14 @@ public class EntryAdder {
     }
 
     public void setActiveDate(String date) {
+        try {
+            // Parse string with local date to check that format is correct
+            LocalDate.parse(date, DateTimeFormatter.ISO_LOCAL_DATE);
+        } catch (DateTimeParseException ex) {
+            throw new IllegalArgumentException(
+                    "Date string must have YYYY-MM-DD format"
+                    );
+        }
         activeDate = date;
     }
 }
