@@ -5,12 +5,10 @@ import java.util.Collections;
 
 public class TrainingRecord {
     private ArrayList<ExerciseEntry> entries;
-    private EntryDate activeDate;
     private StorageInterface storage;
 
     public TrainingRecord() {
         entries = new ArrayList<ExerciseEntry>();
-        activeDate = EntryDate.today();
     }
 
     public ArrayList<ExerciseEntry> listEntries() {
@@ -20,15 +18,6 @@ public class TrainingRecord {
 
     public void addEntry(ExerciseEntry entry) {
         entries.add(entry);
-    }
-
-    public void addEntry(String exercise) {
-        ExerciseEntry entry = new ExerciseEntry(activeDate.toString(), exercise);
-        entries.add(entry);
-    }
-
-    public void setActiveDate(EntryDate date) {
-        activeDate = date;
     }
 
     public void setStorage(StorageInterface newStorage) {
@@ -41,10 +30,6 @@ public class TrainingRecord {
 
     public static TrainingRecord load(StorageInterface storage) {
         return storage.load();
-    }
-
-    public EntryDate getActiveDate() {
-        return activeDate;
     }
 
     private void sort() {
