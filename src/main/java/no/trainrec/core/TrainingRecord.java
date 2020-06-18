@@ -31,8 +31,8 @@ public class TrainingRecord {
         activeDate = date;
     }
 
-    public void setStorage(StorageInterface storage) {
-        this.storage = storage;
+    public void setStorage(StorageInterface newStorage) {
+        storage = newStorage;
     }
 
     public void save() {

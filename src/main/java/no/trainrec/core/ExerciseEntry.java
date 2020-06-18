@@ -6,9 +6,9 @@ public class ExerciseEntry {
     private String date;
     private String exercise;
 
-    public ExerciseEntry(String date, String exercise) {
-        this.date = date;
-        this.exercise = exercise;
+    public ExerciseEntry(String inputDate, String inputExercise) {
+        date = inputDate;
+        exercise = inputExercise;
     }
 
     public String getDate() {
