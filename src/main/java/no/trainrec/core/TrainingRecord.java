@@ -18,6 +18,10 @@ public class TrainingRecord {
         return entries;
     }
 
+    public void addEntry(ExerciseEntry entry) {
+        entries.add(entry);
+    }
+
     public void addEntry(String exercise) {
         ExerciseEntry entry = new ExerciseEntry(activeDate.toString(), exercise);
         entries.add(entry);
