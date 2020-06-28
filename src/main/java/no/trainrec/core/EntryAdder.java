@@ -6,8 +6,8 @@ import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
 
 public class EntryAdder {
-    TrainingRecord rec;
-    String activeDate;
+    private TrainingRecord rec;
+    private String activeDate;
 
     public EntryAdder(TrainingRecord inputRec) {
         rec = inputRec;
@@ -19,6 +19,10 @@ public class EntryAdder {
     public void addEntry(String exerciseName) {
         ExerciseEntry entry = new ExerciseEntry(activeDate, exerciseName);
         rec.addEntry(entry);
+    }
+
+    public String getActiveDate() {
+        return activeDate;
     }
 
     public void setActiveDate(String newDate) {
