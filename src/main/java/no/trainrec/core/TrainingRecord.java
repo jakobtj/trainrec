@@ -1,17 +1,18 @@
 package no.trainrec.core;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class TrainingRecord {
-    private ArrayList<ExerciseEntry> entries;
+    private List<ExerciseEntry> entries;
     private StorageInterface storage;
 
     public TrainingRecord() {
         entries = new ArrayList<ExerciseEntry>();
     }
 
-    public ArrayList<ExerciseEntry> listEntries() {
+    public List<ExerciseEntry> listEntries() {
         sort();
         return entries;
     }
