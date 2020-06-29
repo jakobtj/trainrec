@@ -13,4 +13,4 @@ It contains the core logic,
 with interfaces for connecting a UI and a storage system.
 
 ## License
-This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md).
+This project is licensed under the MIT License - see [LICENSE](LICENSE).
