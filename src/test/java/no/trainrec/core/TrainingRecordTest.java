@@ -20,14 +20,6 @@ public class TrainingRecordTest {
     }
 
     @Test
-    public void testNewRecordHasZeroEntries() {
-        TrainingRecord rec = new TrainingRecord();
-        List entries = rec.listEntries();
-
-        Assert.assertEquals(0, entries.size());
-    }
-
-    @Test
     public void testSaveCallsStorageImplementation() {
         beforeRecord.save();
         Mockito.verify(db).save(beforeRecord);
