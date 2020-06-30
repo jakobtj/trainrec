@@ -13,10 +13,8 @@ public class TrainingRecordTest {
 
     @Before
     public void setUp() {
-        beforeRecord = new TrainingRecord();
-
         db = Mockito.mock(StorageInterface.class);
-        beforeRecord.setStorage(db);
+        beforeRecord = new TrainingRecord(db);
     }
 
     @Test

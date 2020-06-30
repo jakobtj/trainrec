@@ -8,7 +8,8 @@ public class TrainingRecord {
     private List<ExerciseEntry> entries;
     private StorageInterface storage;
 
-    public TrainingRecord() {
+    public TrainingRecord(StorageInterface inputStorage) {
+        storage = inputStorage;
         entries = new ArrayList<ExerciseEntry>();
     }
 
