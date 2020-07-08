@@ -1,4 +1,6 @@
-package no.trainrec.core;
+package no.trainrec.core.data;
+
+import no.trainrec.core.domain.ExerciseEntry;
 
 import java.util.List;
 import java.util.ArrayList;

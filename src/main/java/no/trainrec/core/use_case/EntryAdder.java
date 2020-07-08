@@ -1,4 +1,7 @@
-package no.trainrec.core;
+package no.trainrec.core.use_case;
+
+import no.trainrec.core.data.TrainingRecord;
+import no.trainrec.core.domain.ExerciseEntry;
 
 import java.lang.IllegalArgumentException;
 import java.time.format.DateTimeFormatter;

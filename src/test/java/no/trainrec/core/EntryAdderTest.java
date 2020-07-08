@@ -1,5 +1,9 @@
 package no.trainrec.core;
 
+import no.trainrec.core.domain.ExerciseEntry;
+import no.trainrec.core.data.TrainingRecord;
+import no.trainrec.core.use_case.EntryAdder;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;

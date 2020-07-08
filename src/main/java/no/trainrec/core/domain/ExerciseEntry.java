@@ -1,4 +1,4 @@
-package no.trainrec.core;
+package no.trainrec.core.domain;
 
 import java.util.Comparator;
 

@@ -1,5 +1,8 @@
 package no.trainrec.core;
 
+import no.trainrec.core.data.TrainingRecord;
+import no.trainrec.core.data.StorageInterface;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
