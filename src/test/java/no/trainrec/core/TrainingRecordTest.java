@@ -1,36 +1,41 @@
 package no.trainrec.core;
 
 import no.trainrec.core.data.TrainingRecord;
+import no.trainrec.core.domain.ExerciseEntry;
 import no.trainrec.core.data.StorageInterface;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
+
 import org.mockito.Mockito;
+import org.mockito.ArgumentMatchers;
 
 import java.util.List;
 
 public class TrainingRecordTest {
-    private TrainingRecord beforeRecord;
     private StorageInterface db;
 
     @Before
     public void setUp() {
         db = Mockito.mock(StorageInterface.class);
-        beforeRecord = new TrainingRecord(db);
     }
 
     @Test
     public void testSaveCallsStorageImplementation() {
-        beforeRecord.save();
-        Mockito.verify(db).save(beforeRecord);
+        TrainingRecord rec = new TrainingRecord(db);
+        rec.save();
+
+        Mockito.verify(db).save(ArgumentMatchers.<ExerciseEntry>anyList());
     }
 
     @Test
     public void testLoad() {
-        Mockito.when(db.load()).thenReturn(beforeRecord);
-        TrainingRecord rec = TrainingRecord.load(db);
+        List listMock = Mockito.mock(List.class);
+        Mockito.when(db.load()).thenReturn(listMock);
 
-        Assert.assertEquals(beforeRecord, rec);
+        TrainingRecord rec = new TrainingRecord(db);
+
+        Assert.assertEquals(listMock, rec.listEntries());
     }
 }

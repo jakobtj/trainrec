@@ -12,7 +12,7 @@ public class TrainingRecord {
 
     public TrainingRecord(StorageInterface inputStorage) {
         storage = inputStorage;
-        entries = new ArrayList<ExerciseEntry>();
+        entries = storage.load();
     }
 
     public List<ExerciseEntry> listEntries() {
@@ -29,11 +29,7 @@ public class TrainingRecord {
     }
 
     public void save() {
-        storage.save(this);
-    }
-
-    public static TrainingRecord load(StorageInterface storage) {
-        return storage.load();
+        storage.save(entries);
     }
 
     private void sort() {
