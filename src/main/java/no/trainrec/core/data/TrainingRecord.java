@@ -24,10 +24,6 @@ public class TrainingRecord {
         entries.add(entry);
     }
 
-    public void setStorage(StorageInterface newStorage) {
-        storage = newStorage;
-    }
-
     public void save() {
         storage.save(entries);
     }
