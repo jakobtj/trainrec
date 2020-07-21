@@ -4,10 +4,9 @@ import no.trainrec.core.domain.ExerciseEntry;
 import no.trainrec.core.data.TrainingRecord;
 import no.trainrec.core.use_case.EntryAdder;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.Assert;
-import org.junit.function.ThrowingRunnable;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import org.mockito.Mockito;
 import org.mockito.ArgumentCaptor;
@@ -21,7 +20,7 @@ public class EntryAdderTest {
     private ArgumentCaptor<ExerciseEntry> captor;
     private EntryAdder adder;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         // Mock TrainingRecord (repo) with captor for checking
         // that passed entry is as expected
@@ -39,8 +38,8 @@ public class EntryAdderTest {
         ExerciseEntry passedEntry = captor.getValue();
         String today = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
 
-        Assert.assertEquals(today, passedEntry.getDate());
-        Assert.assertEquals(inputName, passedEntry.getExercise());
+        Assertions.assertEquals(today, passedEntry.getDate());
+        Assertions.assertEquals(inputName, passedEntry.getExercise());
     }
 
     @Test
@@ -54,23 +53,21 @@ public class EntryAdderTest {
         Mockito.verify(mockedRec).addEntry(captor.capture());
         ExerciseEntry passedEntry = captor.getValue();
 
-        Assert.assertEquals(inputDate, passedEntry.getDate());
-        Assert.assertEquals(inputName, passedEntry.getExercise());
+        Assertions.assertEquals(inputDate, passedEntry.getDate());
+        Assertions.assertEquals(inputName, passedEntry.getExercise());
     }
 
     @Test
     public void testSetErroneousDateThrowsException() {
         String notADate = "??";
-        Throwable exception = Assert.assertThrows(
-                IllegalArgumentException.class,
-                new ThrowingRunnable() {
-                    @Override
-                    public void run() throws Throwable {
-                        adder.setActiveDate(notADate);
-                    }
-                });
-        Assert.assertEquals("Date string must have YYYY-MM-DD format",
-            exception.getMessage()
-            );
+        Throwable exception = Assertions.assertThrows(
+            IllegalArgumentException.class,
+            () -> {
+                adder.setActiveDate(notADate);
+        });
+        String expectedMessage = "Date string must have YYYY-MM-DD format";
+        String actualMessage = exception.getMessage();
+
+        Assertions.assertTrue(actualMessage.contains(expectedMessage));
     }
 }

@@ -4,9 +4,9 @@ import no.trainrec.core.data.TrainingRecord;
 import no.trainrec.core.domain.ExerciseEntry;
 import no.trainrec.core.data.StorageInterface;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import org.mockito.Mockito;
 import org.mockito.ArgumentMatchers;
@@ -16,7 +16,7 @@ import java.util.List;
 public class TrainingRecordTest {
     private StorageInterface db;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         db = Mockito.mock(StorageInterface.class);
     }
@@ -36,6 +36,6 @@ public class TrainingRecordTest {
 
         TrainingRecord rec = new TrainingRecord(db);
 
-        Assert.assertEquals(listMock, rec.listEntries());
+        Assertions.assertEquals(listMock, rec.listEntries());
     }
 }
