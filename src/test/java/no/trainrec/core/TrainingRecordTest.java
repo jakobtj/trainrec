@@ -13,6 +13,10 @@ import org.mockito.ArgumentMatchers;
 
 import java.util.List;
 
+// Intermediate interface to satisfy compiler type requirements.
+// Necessary to avoid unchecked/unsafe warning in testLoad().
+interface EntryList extends List<ExerciseEntry> {}
+
 public class TrainingRecordTest {
     private StorageInterface db;
 
@@ -31,7 +35,7 @@ public class TrainingRecordTest {
 
     @Test
     public void testLoad() {
-        List listMock = Mockito.mock(List.class);
+        List<ExerciseEntry> listMock = Mockito.mock(EntryList.class);
         Mockito.when(db.load()).thenReturn(listMock);
 
         TrainingRecord rec = new TrainingRecord(db);
